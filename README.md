@@ -1,4 +1,5 @@
-programming ARM microcontroller using assembly or without any dependancy libraries
+programming ARM microcontroller using assembly or without any dependancy libraries.
+Here I used stm32f767zi nucleo board as reference you can use same board or by changing some register values you can make it to work on different board
 
 #### Requirements
 
