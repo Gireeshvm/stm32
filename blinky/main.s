@@ -1,8 +1,6 @@
 .thumb
 /*
-green led   :   PB0
 blue led    :   PB7
-red led     :   PB17
 */
 
 @ variables definition
@@ -30,15 +28,15 @@ _start:
     
     @ Configure port pins as output
     ldr r1, =gpioB
-    ldr r2, =(0x01 | 1<<14 | 1 << 28)   @ used() so that assembler will pre calculate reg value
+    ldr r2, =( 1<<14 )   @ used() so that assembler will pre calculate reg value
     str r2, [r1]
     
 _loop:
-    ldr r2, =(1 | 1<<7 | 1<<14)     @ Turn on all 3 led's
+    ldr r2, =(1<<7 )     @ Turn on led
     str r2, [r1, #0x14]
     ldr r0, =0x800000
     bl _delay 
-    mov r2, #0x0                    @ Turn off all
+    mov r2, #0x0                    @ Turn off 
     str r2, [r1, #0x14]
     ldr r0, =0x800000
     bl _delay
