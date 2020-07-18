@@ -8,9 +8,9 @@ programming ARM microcontroller using assembly or without any dependancy librari
 #### Compiling and Debug
 
 ```
-make all # this will compile everything
-pyocd flash --target=stm32f767zi main.bin # To flash image to board. To know which board available run pyocd list --target
-pyocd gdb # This will start a gdb server on localhost:3333
+make all                                    # this will compile everything
+pyocd flash --target=stm32f767zi main.bin   # To flash image to board. To know which board available run pyocd list --target
+pyocd gdb                                   # This will start a gdb server on localhost:3333
 arm-none-eabi-gdb
-target remote :3333 # Debug program
+target remote :3333                         # Debug program
 ```
