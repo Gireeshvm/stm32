@@ -12,6 +12,8 @@ blue led    :   PB7
 @ vector table 
 .word   0x2007ffff      @ stack address
 .word   _start
+.word   _start
+.word   _start
 @ vector end
 
 
