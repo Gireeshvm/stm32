@@ -2,8 +2,8 @@ programming ARM microcontroller using assembly or without any dependancy librari
 
 #### Requirements
 
-_ As toolchain I used **arm-none-eabi**.
-_ For uploading and debugging **pyocd**. \* **make**
+    >As toolchain I used **arm-none-eabi**.
+    >For uploading and debugging **pyocd**. \* **make**
 
 #### Compiling and Debug
 
