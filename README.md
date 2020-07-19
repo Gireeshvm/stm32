@@ -1,10 +1,10 @@
-programming ARM microcontroller using assembly or without any dependancy libraries.
+programming ARM microcontroller using assembly or without any dependancy libraries. <br/>
 Here I used stm32f767zi nucleo board as reference you can use same board or by changing some register values you can make it to work on different board
 
 #### Requirements
 
-> As toolchain I used **arm-none-eabi**.
-> For uploading and debugging **pyocd** and **make**
+- As toolchain I used **arm-none-eabi**.
+- For uploading and debugging **pyocd** and **make**
 
 #### Compiling and Debug
 
