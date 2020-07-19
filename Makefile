@@ -2,9 +2,9 @@ CC = arm-none-eabi-gcc
 AS = arm-none-eabi-as
 LD = arm-none-eabi-ld
 OC = arm-none-eabi-objcopy
-CFLAGS = -S -mthumb -mcpu=cortex-m7
+CFLAGS = -c -mthumb -mcpu=cortex-m7
 AFLAGS = -mcpu=cortex-m7 
-LFLAGS = -Ttext 0x8000000
+LFLAGS = -Ttext 0x8000000 -T $(LFile)
 OFlAGS = -S -O binary
 TARGET = stm32f767zi
 # TARGET = stm32f103c
@@ -15,14 +15,11 @@ all: main.bin
 main.bin: main.elf
 	$(OC) $(OFlAGS) main.elf main.bin
 
-main.elf: main.o linker.ld
+main.elf: main.o 
 	$(LD) $(LFLAGS) -o main.elf main.o
 
 main.o: main.s
 	$(AS) $(AFLAGS)  -o main.o main.s
-
-main.s: main.c
-	$(CC) $(CFLAGS) -o main.s main.c
 
 clean:
 	rm -f *.o *.bin *.elf

@@ -2,7 +2,9 @@
 .align 4
 .global _start
 /*
+green led   :   PB0
 blue led    :   PB7
+red led     :   PB14
 */
 
 @ variables definition
@@ -22,7 +24,7 @@ blue led    :   PB7
 _delay:
     sub r0, r0, #0x1    @ assumed that r0 will have counter value
     bne _delay 
-    mov pc, LR          @ bl will push return address to LR reg. while returning LR is moved to pc
+    b _loop
 
 _start:
     @ Enable clock for gpio port B
@@ -32,16 +34,18 @@ _start:
     
     @ Configure port pins as output
     ldr r1, =gpioB
-    ldr r2, =( 1<<14 )   @ used() so that assembler will pre calculate reg value
+    ldr r2, =( 1 | 1<<14 | 1<<28 )   @ used() so that assembler will pre calculate reg value
     str r2, [r1]
+    mov r2, #0x1        
+    mov r3, #0x1
+    lsl r3, r3, #0x14
     
 _loop:
-    ldr r2, =(1<<7 )     @ Turn on led
+    lsl r2, r2, #0x7                @ each time it shifts register is changed to another led value
+    cmp r2, r3                      @ if r2 has value greater than 1 << 0x14 then set it to 1
+    ble _skip
+    mov r2, #0x1
+_skip:
     str r2, [r1, #0x14]
-    ldr r0, =0x800000
-    bl _delay 
-    mov r2, #0x0                    @ Turn off 
-    str r2, [r1, #0x14]
-    ldr r0, =0x800000
-    bl _delay
-    b _loop
+    ldr r0, =0x400000
+    b _delay 
