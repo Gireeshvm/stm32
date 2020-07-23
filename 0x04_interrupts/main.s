@@ -2,7 +2,7 @@
 .align 4
 .global _start
 
-.include "reg.s"
+.include "../include/reg.s"
 
 @ vector table 
 .word   0x2007ffff      @ stack address
