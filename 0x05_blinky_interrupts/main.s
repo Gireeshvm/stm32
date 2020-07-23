@@ -36,11 +36,12 @@ _int_handler_13:
     ldr r1, =GPIOB_ODR
     ldr r2, =(1 | 1<<7 | 1<< 14)    @ turn all led's
     str r2, [r1]
+
     mov r2, r5
     lsl r2,r2, #7
     ldr r3, =(1<<14)
     cmp r2, r3 
-    ble _int_led_less
+    ble _int_led_less               @ modify which led to blink by left shifting 1 by 7 each time if it is shifted more than 14 then reset to 1
     mov r2, #1
 _int_led_less:
     mov r5, r2
