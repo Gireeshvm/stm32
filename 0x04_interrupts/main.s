@@ -42,7 +42,7 @@ _start:
 
     ldr r2, =(1<<5)         @ set ext13 to port c
     ldr r1, =SYSCFG_EXTI4
-    str r2, [r1, #0x14]
+    str r2, [r1]
 
     ldr r1, =EXTI
     ldr r2, =(1<<13)        @ rising trigger set

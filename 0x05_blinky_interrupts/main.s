@@ -17,14 +17,14 @@
 
 
 _systick_handler:
-    push    {r3, lr}
+    push    {lr}
     ldr r1, =GPIOB_ODR
     ldr r2, [r1]
     mov r3, r5                  @ r5 will have which led to toggle it will in same reg through out program so dont use it
     EOR r2, r3                  @ by xor with led value it toggles
     ldr r1, =GPIOB_ODR
     str r2, [r1]
-    pop     {r3, pc}
+    pop     {pc}
 
 
 _int_handler_13:
